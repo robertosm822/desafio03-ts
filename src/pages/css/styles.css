@@ -2,12 +2,12 @@
     margin-bottom: 15px;
 }
 .btn-login, :visited {
-    background-color: #363636;
+    background-color: #363636 !important;
     color: #ffffff;
 }
 
 .btn-login:hover {
-    background-color: #646464;
+    background-color: #646464 !important;
 }
 
 .btn-exit {
