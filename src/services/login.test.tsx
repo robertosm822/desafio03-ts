@@ -1,15 +1,24 @@
 import { login } from "./login"
 
-describe('login', () => {
 
-    const mockEmail = 'nath@dio.bank'
-    it('Deve exibir um alert com boas vindas caso o email seja válido', async() => {
-        const response = await login(mockEmail)
-        // expect(response).toBeTruthy()
-    })
+describe("login service", () => {
+    it("should return true for valid email and password", async () => {
+        const result = await login("roberto.melo@dio.bank", "123456");
+        expect(result).toBe(true);
+    });
 
-    it('Deve exibir um erro caso o email seja inválido', async() => {
-        const response = await login('email@invalido.com')
-        expect(response).toBeFalsy()
-    })
+    it("should return false for invalid email", async () => {
+        const result = await login("invalid@example.com", "password123");
+        expect(result).toBe(false);
+    });
+
+    it("should return false for invalid password", async () => {
+        const result = await login("test@example.com", "wrongpassword");
+        expect(result).toBe(false);
+    });
+
+    it("should return false for both invalid email and password", async () => {
+        const result = await login("invalid@example.com", "wrongpassword");
+        expect(result).toBe(false);
+    });
 })
