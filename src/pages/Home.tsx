@@ -1,5 +1,5 @@
 import { Box, Center, Input } from "@chakra-ui/react";
-import { MouseEventHandler, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../components/AppContext";
 import { Card } from "../components/Card";
@@ -10,14 +10,15 @@ import './css/styles.css'
 
 const Home = () => {
     const [ email, setEmail ] = useState<string>('')
+    const [password, setPassword] = useState<string>("");
     const { setIsLoggedIn } = useContext(AppContext)
     const navigate = useNavigate()
 
-    const validateUser = async (email: string) => {
-        const loggedIn = await login(email)
+    const validateUser = async (email: string, password: string) => {
+        const loggedIn = await login(email, password)
 
         if(!loggedIn){
-            return alert('Email inválido')
+            return alert('Email ou senha inválidos')
         }
 
         setIsLoggedIn(true)
@@ -32,18 +33,22 @@ const Home = () => {
                     <h1>Faça o login</h1>
                 </Center>
                 <div className="space-input-login">
-                <Input placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)} />
-                </div>
-               
-                <div className="space-input-login">
-                    <Input placeholder="password" />
-                </div>
-               
-
-                <Center>
-                    <DButton
-                        onClick={() => validateUser(email)}
+                    <Input
+                        placeholder="email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
                     />
+                </div>
+                <div className="space-input-login">
+                    <Input
+                        type="password"
+                        placeholder="senha"
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                    />
+                </div>
+                <Center>
+                    <DButton onClick={() => validateUser(email, password)} />
                 </Center>
             </Card>
         </Box>
