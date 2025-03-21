@@ -15,7 +15,7 @@ export const Header  = () => {
   }
 
   return(
-    <Flex backgroundColor='orange' padding='5px'>
+    <Flex backgroundColor='#757575' color={'#fff'} padding='5px'>
       <Box>
         <Center>
           <Text fontSize='3xl'>Dio Bank</Text>
@@ -27,6 +27,7 @@ export const Header  = () => {
             <Spacer />
             <Button
               onClick={() => logout()}
+              className='btn-exit'
             >
               Sair
             </Button>

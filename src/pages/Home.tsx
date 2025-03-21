@@ -6,6 +6,7 @@ import { Card } from "../components/Card";
 import DButton from "../components/DButton";
 import { login } from "../services/login";
 import { changeLocalStorage } from "../services/storage";
+import './css/styles.css'
 
 const Home = () => {
     const [ email, setEmail ] = useState<string>('')
@@ -30,8 +31,15 @@ const Home = () => {
                 <Center>
                     <h1>Faça o login</h1>
                 </Center>
+                <div className="space-input-login">
                 <Input placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)} />
-                <Input placeholder="password" />
+                </div>
+               
+                <div className="space-input-login">
+                    <Input placeholder="password" />
+                </div>
+               
+
                 <Center>
                     <DButton
                         onClick={() => validateUser(email)}

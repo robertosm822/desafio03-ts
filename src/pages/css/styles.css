@@ -1,0 +1,18 @@
+.space-input-login{
+    margin-bottom: 15px;
+}
+.btn-login, :visited {
+    background-color: #363636;
+    color: #ffffff;
+}
+
+.btn-login:hover {
+    background-color: #646464;
+}
+
+.btn-exit {
+    background-color: #383838 !important;
+}
+.btn-exit:hover {
+    background-color: #c5c1c1 !important;
+}
